@@ -1,36 +1,31 @@
 /**
- * Created by janet.bogle on 10/9/17.
+ * Created by janet.bogle on 10/11/17.
  */
 import React from 'react';
-//import GetJobs from "./GetJobs";
 
 class ShowJobs extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      jobs: [],
+      selected: props.jobsProp[0],
     };
 
-    this.jobSearchHandler = this.jobSearchHandler.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  jobSearchHandler() {
-    alert('in handleJobSearch');
-
-    /*
-        GetJobs.fetchJobs( jobs => {
-            this.setState({
-                jobs: jobs
-            });
-        });
-*/
+  handleClick(event) {
+    this.setState({ selected: event.target.value });
   }
 
   render() {
     return (
       <div>
-        <button onClick={this.jobSearchHandler}>Find Jobs</button>
+        <select value={this.state.selected} onChange={this.handleClick}>
+          {this.props.jobsProp.map((option, key) => {
+            return <option key={key}>{option}</option>;
+          })}
+        </select>
       </div>
     );
   }
