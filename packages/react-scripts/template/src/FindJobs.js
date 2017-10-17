@@ -3,13 +3,14 @@
  */
 import React from 'react';
 import ShowJobs from './ShowJobs';
+import JobsData from './JobsData';
 
 class FindJobs extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      jobs: ['energy', 'pharma'],
+      jobs: [],
       showButton: true,
       showDropDown: false,
     };
@@ -18,6 +19,11 @@ class FindJobs extends React.Component {
   }
 
   jobSearchHandler() {
+    JobsData.fetchJobs('testing', data => {
+      this.setState({ jobs: data });
+    });
+    alert('line after fetchJobs. jobs: ' + this.state.jobs);
+
     this.setState({
       showDropDown: true,
       showButton: false,

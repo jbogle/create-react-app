@@ -4,7 +4,7 @@
 export default function endpointTest() {
   alert('in endpointTest function');
 
-  return fetch(`/endpoint`, {
+  return fetch(`/fetchJobs`, {
     accept: 'application/json',
   }).then(checkStatus);
   //.then(parseJSON)
