@@ -2,19 +2,15 @@
  * Created by janet.bogle on 10/9/17.
  */
 
-function fetchJobs(query, cb) {
-  alert('in fetchJobs function. query: ' + query);
-
-  return fetch(`/fetchJobs`, {
-    accept: 'application/json',
-  })
+function fetchJobs(query) {
+  return fetch(`/fetchJobs`)
     .then(checkStatus)
-    .then(parseJSON)
-    .then(cb);
+    .then(parseJSON);
 }
 
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
+    alert('in checkSts');
     return response;
   }
   const error = new Error(`HTTP Error ${response.statusText}`);
@@ -25,6 +21,7 @@ function checkStatus(response) {
 }
 
 function parseJSON(response) {
+  alert('in parseJSON');
   return response.json();
 }
 

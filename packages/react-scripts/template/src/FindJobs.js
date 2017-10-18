@@ -19,14 +19,12 @@ class FindJobs extends React.Component {
   }
 
   jobSearchHandler() {
-    JobsData.fetchJobs('testing', data => {
-      this.setState({ jobs: data });
-    });
-    alert('line after fetchJobs. jobs: ' + this.state.jobs);
-
-    this.setState({
-      showDropDown: true,
-      showButton: false,
+    JobsData.fetchJobs('testing').then(data => {
+      this.setState({
+        jobs: data,
+        showDropDown: true,
+        showButton: false,
+      });
     });
   }
 
