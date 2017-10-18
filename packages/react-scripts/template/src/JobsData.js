@@ -10,7 +10,6 @@ function fetchJobs(query) {
 
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
-    alert('in checkSts');
     return response;
   }
   const error = new Error(`HTTP Error ${response.statusText}`);
@@ -21,7 +20,6 @@ function checkStatus(response) {
 }
 
 function parseJSON(response) {
-  alert('in parseJSON');
   return response.json();
 }
 
